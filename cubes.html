@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="stylesheet/cubes.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        for (let i = 1; i <= 720; i++) {
+            document.write(`<div class="cube" id="cube${i}"></div>`);
+        }
+    </script>
+    <script>
+        function getRandomDelay() {
+            return Math.random() * 2000; // Adjust the range as needed
+        }
+
+        function changeColor(cubeId) {
+            const cube = document.getElementById(cubeId);
+            const originalColor = cube.style.backgroundColor || 'white'; // Default to white if no background color is set
+            const transitionDuration = 2000; // Adjust the duration of the transition
+
+            let startTime;
+            let progress = 0;
+
+            function animate() {
+                const currentTime = Date.now();
+                const elapsedTime = currentTime - startTime;
+                progress = elapsedTime / transitionDuration;
+
+                if (progress < 1) {
+                    const newColor = `rgba(0, 0, 0, ${progress})`;
+                    cube.style.backgroundColor = newColor;
+                    requestAnimationFrame(animate);
+                } else {
+                    cube.style.backgroundColor = 'black';
+                }
+            }
+
+            setTimeout(() => {
+                startTime = Date.now();
+                requestAnimationFrame(animate);
+            }, getRandomDelay());
+        }
+
+        // Call changeColor for each cube
+        const cubeCount = 2000;
+
+        for (let i = 1; i <= cubeCount; i++) {
+            changeColor(`cube${i}`);
+        }
+    </script>
+
+</body>
+
+</html>

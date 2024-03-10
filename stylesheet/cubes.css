@@ -1,0 +1,19 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+}
+
+body>* {
+    cursor: pointer;
+}
+
+.cube {
+    height: 50px;
+    border: 1px solid black;
+    transition: all 0.25s ease-in-out;
+}
+
+.cube:hover {
+    background-color: red !important;
+    transition: all 0.25s ease-in-out;
+}
